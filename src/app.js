@@ -10,6 +10,7 @@ const userRoutes = require('./routes/user');
 const platRoutes = require('./routes/plat');
 const vendorRoutes = require('./routes/vendor');
 const errorHandler = require('./middlewares/errorHandler');
+const gameAdapter = require('./routes/gameAdapter');
 
 const app = express();
 
@@ -37,6 +38,8 @@ app.use('/api/v2', apiV2Routes);
 app.use('/user', userRoutes);
 app.use('/plat', platRoutes);
 app.use('/vendor', vendorRoutes);
+
+app.use(gameAdapter);
 
 // 404
 app.use((req, res) => res.status(404).json({ success: false, message: 'Route not found' }));
